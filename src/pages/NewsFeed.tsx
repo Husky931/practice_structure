@@ -1,6 +1,4 @@
 import { loremIpsum } from "lorem-ipsum"
-import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom"
-import Test from "./Test"
 
 function NewsFeed() {
     return (
