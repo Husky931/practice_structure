@@ -1,27 +1,33 @@
-import { useState } from "react"
-import reactLogo from "../assets/react.svg"
+import { useState, useEffect } from "react"
 
 function HomePage() {
-    const [count, setCount] = useState(0)
+    const [films, setFilms] = useState(null)
+    let [count, setCount] = useState(0)
+
+    useEffect(() => {
+        fetch("http://localhost:1337/api/films")
+            .then((res) => {
+                if (res.ok) {
+                    return res.json()
+                }
+                throw res
+            })
+            .then((data) => setFilms(data))
+            .catch((err) => console.log(err))
+        console.log(films)
+    }, [count])
 
     return (
         <div className="App">
-            <div>
-                <a href="https://vitejs.dev" target="_blank">
-                    <img src="/vite.svg" className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://reactjs.org" target="_blank">
-                    <img src={reactLogo} className="logo react" alt="React logo" />
-                </a>
-            </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className="read-the-docs text-3xl">Click on the Vite and React logos to learn more</p>
+            <ul>
+                <li>
+                    <a href="/films">films</a>
+                </li>
+                <li>news fed</li>
+                <li>1</li>
+            </ul>
+            <button onClick={() => setCount(count + 1)}>Click me</button>
+            <p>{count}</p>
         </div>
     )
 }
