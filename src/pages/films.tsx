@@ -3,28 +3,24 @@ import { fetcher } from "../lib/api"
 
 function Films() {
     const [films, setFilms] = useState([])
+    let [pageIndex, setPageIndex] = useState(1)
 
     useEffect(() => {
         fetchData()
-    }, [])
+        console.log(pageIndex)
+    }, [pageIndex])
 
     async function fetchData() {
-        const data = await fetcher("http://localhost:1337/api/films")
+        const data = await fetcher(`${import.meta.env.VITE_BASE_URL}films?pagination[page]=${pageIndex}&pagination[pageSize]=20`)
         setFilms(data.data)
-        hello()
     }
 
-    function hello() {
-        return console.log("bite me")
-    }
-
-    console.log(films)
-    console.log("whatsup")
     return (
         <div>
-            <h1>Hi, i am films page</h1>
-            <h1>zdr</h1>
-            <h1>ola</h1>
+            <div>
+                <button onClick={() => setPageIndex(--pageIndex)}>Previous</button>
+                <button onClick={() => setPageIndex(++pageIndex)}>Next</button>
+            </div>
             {films.map((m, i) => (
                 <h1 key={m.id}>{m?.attributes.title}</h1>
             ))}

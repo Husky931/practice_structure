@@ -5,7 +5,7 @@ function HomePage() {
     let [count, setCount] = useState(0)
 
     useEffect(() => {
-        fetch("http://localhost:1337/api/films")
+        fetch(`${import.meta.env.VITE_BASE_URL}films`)
             .then((res) => {
                 if (res.ok) {
                     return res.json()
