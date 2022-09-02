@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 import { fetcher } from "../lib/api"
 
 function Films() {
@@ -22,7 +23,9 @@ function Films() {
                 <button onClick={() => setPageIndex(++pageIndex)}>Next</button>
             </div>
             {films.map((m, i) => (
-                <h1 key={m.id}>{m?.attributes.title}</h1>
+                <Link key={m.id} to={`/films/${m.attributes.title}`} state={m.id}>
+                    <h1>{m?.attributes.title}</h1>
+                </Link>
             ))}
         </div>
     )
