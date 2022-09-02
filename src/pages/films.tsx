@@ -6,15 +6,20 @@ function Films() {
 
     useEffect(() => {
         fetchData()
-        console.log(films)
     }, [])
 
     async function fetchData() {
-        const getData = await fetch("http://localhost:1337/api/films")
-        const result = await getData.json()
-        console.log(result)
+        const data = await fetcher("http://localhost:1337/api/films")
+        setFilms(data.data)
+        hello()
     }
 
+    function hello() {
+        return console.log("bite me")
+    }
+
+    console.log(films)
+    console.log("whatsup")
     return (
         <div>
             <h1>Hi, i am films page</h1>

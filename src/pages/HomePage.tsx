@@ -14,9 +14,8 @@ function HomePage() {
             })
             .then((data) => setFilms(data))
             .catch((err) => console.log(err))
-        console.log(films)
     }, [])
-    console.log(films)
+
     return (
         <div className="App">
             <ul>
