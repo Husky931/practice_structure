@@ -3,22 +3,17 @@ import { fetcher } from "../lib/api"
 
 function Films() {
     const [films, setFilms] = useState([])
-    async function fetchData() {
-        fetch("http://localhost:1337/api/films", {
-            headers: {
-                "Content-Type": "application/json"
-            },
-            method: "GET"
-        })
-            .then((res) => res.json())
-            .then((data) => setFilms(data.data))
-            .catch((err) => console.log(err))
-    }
 
     useEffect(() => {
         fetchData()
         console.log(films)
     }, [])
+
+    async function fetchData() {
+        const getData = await fetch("http://localhost:1337/api/films")
+        const result = await getData.json()
+        console.log(result)
+    }
 
     return (
         <div>
