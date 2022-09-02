@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import LoginModal from "../components/LoginModal"
 
 function HomePage() {
     const [films, setFilms] = useState(null)
@@ -27,6 +28,7 @@ function HomePage() {
             </ul>
             <button onClick={() => setCount(count + 1)}>Click me</button>
             <p>{count}</p>
+            <LoginModal />
         </div>
     )
 }

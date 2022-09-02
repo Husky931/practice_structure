@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react"
-// import { GlobalData } from "../../state/globalState"
+import { GlobalData } from "../state"
 import Button from "@mui/material/Button"
 import Dialog from "@mui/material/Dialog"
 import DialogActions from "@mui/material/DialogActions"
@@ -8,7 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle"
 import TextField from "@mui/material/TextField"
 
 export default function LoginModal() {
-    // const { studentSignUpModal, setStudentSignUpModal } = useContext(GlobalData)
+    const { loginModal, setLoginModal } = useContext(GlobalData)
 
     let [step, setStep] = useState<number>(1)
     const [email, setEmail] = useState<string>("")
@@ -20,9 +20,9 @@ export default function LoginModal() {
 
     return (
         <div>
-            <Dialog open={studentSignUpModal} onClose={() => setStudentSignUpModal(false)}>
-                <DialogTitle>Step {step} of 3</DialogTitle>
-                <h2 className="text-2xl px-6">Student sign up</h2>
+            <Dialog open={loginModal} onClose={() => setLoginModal(false)}>
+                <DialogTitle>Step {step} of 1</DialogTitle>
+                <h2 className="text-2xl px-6">Enter your credentials</h2>
                 <DialogContent>
                     <TextField
                         name="email"
