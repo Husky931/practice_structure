@@ -29,8 +29,7 @@ function App() {
             <BrowserRouter>
                 <Navbar />
                 <Routes>
-                    <Route index element={<HomePage />} />
-                    <Route path="feed" element={<NewsFeed />} />
+                    <Route index element={user ? <NewsFeed /> : <HomePage />} />
                     <Route path="films" element={<Films />} />
                     <Route path="/films/:title" element={<IndividualFilm />} />
                     <Route path="*" element={<NotFound />} />
