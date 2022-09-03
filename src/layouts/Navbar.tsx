@@ -2,6 +2,7 @@ import React, { useContext } from "react"
 import { GlobalData } from "../states/state"
 import Button from "@mui/material/Button"
 import { unsetToken } from "../lib/auth"
+import LoginModal from "../components/LoginModal"
 
 export default function Navbar(props: any) {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
@@ -41,6 +42,7 @@ export default function Navbar(props: any) {
                     Logout
                 </Button>
             )}
+            <LoginModal />
         </div>
     )
 }
