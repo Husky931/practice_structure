@@ -1,12 +1,12 @@
 import { useContext, useState, useEffect } from "react"
-import { GlobalData } from "../state"
+import { GlobalData } from "../states/state"
 import Button from "@mui/material/Button"
 import Dialog from "@mui/material/Dialog"
 import DialogActions from "@mui/material/DialogActions"
 import DialogContent from "@mui/material/DialogContent"
 import DialogTitle from "@mui/material/DialogTitle"
 import TextField from "@mui/material/TextField"
-import { fetcher } from "../lib/api"
+import { fetcher } from "../lib/fetcher"
 import { setToken } from "../lib/auth"
 
 export default function LoginModal() {

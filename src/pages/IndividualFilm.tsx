@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams, useLocation } from "react-router-dom"
-import { fetcher } from "../lib/api"
+import { fetcher } from "../lib/fetcher"
 
 function IndividualFilm() {
     const [filmPlot, setFilmPlot] = useState(null)

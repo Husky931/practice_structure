@@ -1,18 +1,31 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Navbar from "./layouts/Navbar"
+import { fetchUserData } from "./lib/getUserData"
+import { getTokenFromLocalCookie } from "./lib/auth"
 import NotFound from "./pages/404"
 import Films from "./pages/Films"
 import HomePage from "./pages/HomePage"
 import IndividualFilm from "./pages/IndividualFilm"
 import NewsFeed from "./pages/NewsFeed"
-import { GlobalData } from "./state"
+import { GlobalData } from "./states/state"
 
 function App() {
     const [loginModal, setLoginModal] = useState(false)
+    const [userData, setUserData] = useState(null)
+    const user = !!getTokenFromLocalCookie()
+
+    useEffect(() => {
+        user && loadUserData()
+    }, [])
+
+    async function loadUserData() {
+        const userData = await fetchUserData()
+        setUserData(userData)
+    }
 
     return (
-        <GlobalData.Provider value={{ loginModal, setLoginModal }}>
+        <GlobalData.Provider value={{ loginModal, setLoginModal, userData }}>
             <BrowserRouter>
                 <Navbar />
                 <Routes>

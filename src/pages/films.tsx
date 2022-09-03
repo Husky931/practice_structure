@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import { fetcher } from "../lib/api"
+import { fetcher } from "../lib/fetcher"
 
 function Films() {
     const [films, setFilms] = useState([])

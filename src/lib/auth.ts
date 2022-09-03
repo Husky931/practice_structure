@@ -19,3 +19,7 @@ export const unsetToken = () => {
 
     window.location.reload()
 }
+
+export const getTokenFromLocalCookie = () => {
+    return Cookies.get("jwt")
+}
