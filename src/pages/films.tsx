@@ -19,8 +19,12 @@ function Films() {
     return (
         <div>
             <div>
-                <button onClick={() => setPageIndex(--pageIndex)}>Previous</button>
-                <button onClick={() => setPageIndex(++pageIndex)}>Next</button>
+                <button className="mx-1" onClick={() => setPageIndex(--pageIndex)}>
+                    Previous
+                </button>
+                <button className="mx-1" onClick={() => setPageIndex(++pageIndex)}>
+                    Next
+                </button>
             </div>
             {films.map((m, i) => (
                 <Link key={m.id} to={`/films/${m.attributes.title}`} state={m.id}>

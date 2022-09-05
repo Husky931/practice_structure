@@ -7,8 +7,10 @@ function NewsFeed() {
             <h1>Hi, i am news feed page</h1>
             <div>{loremIpsum({ count: 5 })}</div>
             <ul>
-                <li>1</li>
-                <li>2</li>
+                <Link to="films">
+                    <li>films page</li>
+                </Link>
+
                 <li>
                     <Link to="test">tedt</Link>
                 </li>

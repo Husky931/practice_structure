@@ -32,7 +32,6 @@ export default function LoginModal() {
         })
 
         setToken(res)
-        console.log(res)
     }
 
     return (
