@@ -1,4 +1,5 @@
 import React, { useContext } from "react"
+import { Link } from "react-router-dom"
 import { GlobalData } from "../states/state"
 import Button from "@mui/material/Button"
 import { unsetToken } from "../lib/auth"
@@ -31,16 +32,17 @@ export default function Navbar(props: any) {
                 </>
             )}
             {userData && (
-                <Button
-                    id="demo-customized-button"
-                    aria-haspopup="true"
-                    variant="contained"
-                    disableElevation
-                    sx={{ marginX: "10px" }}
-                    onClick={() => logoutUser()}
-                >
-                    Logout
-                </Button>
+                <div className="w-full flex justify-between">
+                    <Link to="/">
+                        <Button aria-haspopup="true" variant="contained" disableElevation sx={{ marginX: "10px" }}>
+                            Home
+                        </Button>
+                    </Link>
+
+                    <Button aria-haspopup="true" variant="contained" disableElevation sx={{ marginX: "10px" }} onClick={() => logoutUser()}>
+                        Logout
+                    </Button>
+                </div>
             )}
             <LoginModal />
         </div>

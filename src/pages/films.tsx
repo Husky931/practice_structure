@@ -10,8 +10,7 @@ function Films() {
 
     useEffect(() => {
         fetchMovieData()
-        console.log(pageIndex)
-    }, [pageIndex])
+    }, [])
 
     async function fetchMovieData() {
         const data = await fetcher(`${import.meta.env.VITE_BASE_URL}films?pagination[page]=${pageIndex}&pagination[pageSize]=100`)
