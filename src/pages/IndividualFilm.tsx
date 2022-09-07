@@ -4,10 +4,12 @@ import Cookies from "js-cookie"
 import { fetcher } from "../lib/fetcher"
 import { GlobalData } from "../states/state"
 import { v4 as uuidv4 } from "uuid"
+import markdownToHtml from "../lib/markdownToHtml"
 
 function IndividualFilm() {
     const [filmData, setFilmData] = useState("")
     const [review, setReview] = useState("")
+    const [plot, setPlot] = useState("")
     const { title } = useParams()
     const location = useLocation()
     const { userData } = useContext(GlobalData)
@@ -20,7 +22,9 @@ function IndividualFilm() {
     async function fetchData() {
         const { data } = await fetcher(`${import.meta.env.VITE_BASE_URL}films/${id}?populate=*`)
         setFilmData(data)
-        console.log(data)
+        const plot = await markdownToHtml(data.attributes.plot)
+        setPlot(plot)
+        console.log(plot)
     }
 
     async function addReview() {
@@ -58,7 +62,7 @@ function IndividualFilm() {
             <h1>{title}</h1>
             <br />
             <h3>Movie plot:</h3>
-            <p>{filmData?.attributes?.plot}</p>
+            <div dangerouslySetInnerHTML={{ __html: plot }} />
             <br />
             <textarea value={review} onChange={(e) => setReview(e.target.value)} className="border-2 border-slate-200 rounded w-1/2 h-[150px] p-2" />
             <br />
