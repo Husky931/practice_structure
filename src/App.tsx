@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage"
 import IndividualFilm from "./pages/IndividualFilm"
 import NewsFeed from "./pages/NewsFeed"
 import { GlobalData } from "./states/state"
+import Profile from "./pages/Profile"
 
 function App() {
     const [loginModal, setLoginModal] = useState(false)
@@ -34,6 +35,7 @@ function App() {
                         <>
                             <Route path="films" element={<Films />} />
                             <Route path="/films/:title" element={<IndividualFilm />} />
+                            <Route path="/profile" element={<Profile />} />
                             <Route path="*" element={<NotFound />} />
                         </>
                     ) : (

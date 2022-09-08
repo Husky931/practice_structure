@@ -39,9 +39,23 @@ export default function Navbar(props: any) {
                         </Button>
                     </Link>
 
-                    <Button aria-haspopup="true" variant="contained" disableElevation sx={{ marginX: "10px" }} onClick={() => logoutUser()}>
-                        Logout
-                    </Button>
+                    <div>
+                        <Link to="/profile">
+                            <Button aria-haspopup="true" variant="contained" disableElevation sx={{ marginX: "10px" }}>
+                                Profile
+                            </Button>
+                        </Link>
+
+                        <Button
+                            aria-haspopup="true"
+                            variant="contained"
+                            disableElevation
+                            sx={{ marginX: "10px" }}
+                            onClick={() => logoutUser()}
+                        >
+                            Logout
+                        </Button>
+                    </div>
                 </div>
             )}
             <LoginModal />
